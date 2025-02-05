@@ -1,8 +1,9 @@
 use std::fs::File;
 
-use one_brc::{attempt1::Attempt1, Aggregator};
+use one_brc::{attempt_a::AttemptA, attempt_b::AttemptB, Aggregator};
 
 fn main() {
     let path = "data/measurements.txt";
-    Attempt1::aggregate(File::open(path).unwrap());
+    let mut file = File::open(path).unwrap();
+    AttemptB::aggregate(&mut file);
 }

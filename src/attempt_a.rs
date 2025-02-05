@@ -1,5 +1,6 @@
 use std::{
     collections::BTreeMap,
+    fs::File,
     io::{BufRead, BufReader},
 };
 
@@ -8,7 +9,7 @@ use crate::Aggregator;
 pub struct AttemptA;
 
 impl Aggregator for AttemptA {
-    fn aggregate(input: std::fs::File) {
+    fn aggregate(input: &mut File) {
         let buffered = BufReader::new(input);
 
         // count, sum, min, max

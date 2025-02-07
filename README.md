@@ -44,7 +44,8 @@ Adelaide=-27.8/17.3/58.5
 
 ## Results
 
-| #   | Result (m:s.ms) | Implementation Notes                        |
-| --- | --------------- | ------------------------------------------- |
-| A   | 1:54.22         |                                             |
-| B   | 2:40.11         | Collect and process measurements separately |
+| #   | Result (m:s.ms) | Implementation Notes                                    |
+| --- | --------------- | ------------------------------------------------------- |
+| A   | 1:54.22         |                                                         |
+| B   | 2:40.11         | Collect & process measurements separately.              |
+| C   | 1:38.35         | Use a hashmap instead of an ordered BTree. Sort at end. |

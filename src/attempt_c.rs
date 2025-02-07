@@ -1,5 +1,4 @@
 use std::{
-    cmp::{max_by, min_by},
     collections::HashMap,
     fs::File,
     io::{BufRead, BufReader},
@@ -16,8 +15,6 @@ impl Aggregator for AttemptC {
         // count, sum, min, max
         let mut map: HashMap<String, [f64; 4]> = HashMap::new();
 
-        let compare = |x: &f64, y: &f64| x.total_cmp(y);
-
         buffered.lines().for_each(|line| {
             let ln = line.unwrap();
 
@@ -29,8 +26,8 @@ impl Aggregator for AttemptC {
                     *x = [
                         x[0] + 1_f64,
                         x[1] + measurement,
-                        min_by(measurement, x[2], compare),
-                        max_by(measurement, x[3], compare),
+                        x[2].min(measurement),
+                        x[3].max(measurement),
                     ]
                 })
                 .or_insert([1_f64, measurement, measurement, measurement]);

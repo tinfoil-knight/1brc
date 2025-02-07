@@ -25,16 +25,8 @@ impl Aggregator for AttemptA {
                     *x = [
                         x[0] + 1_f64,
                         x[1] + measurement,
-                        if measurement < x[2] {
-                            measurement
-                        } else {
-                            x[2]
-                        },
-                        if measurement > x[3] {
-                            measurement
-                        } else {
-                            x[3]
-                        },
+                        x[2].min(measurement),
+                        x[3].max(measurement),
                     ];
                 }
                 None => {

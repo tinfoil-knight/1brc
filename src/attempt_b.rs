@@ -1,5 +1,4 @@
 use std::{
-    cmp::{max_by, min_by},
     collections::BTreeMap,
     f64::{INFINITY, NEG_INFINITY},
     fs::File,
@@ -32,9 +31,8 @@ impl Aggregator for AttemptB {
 
             let (mut min_m, mut max_m, mut sum) = (INFINITY, NEG_INFINITY, 0.0);
             for m in measurements {
-                let compare = |x: &f64, y: &f64| x.total_cmp(y);
-                min_m = min_by(min_m, m, compare);
-                max_m = max_by(max_m, m, compare);
+                min_m = min_m.min(m);
+                max_m = max_m.max(m);
                 sum += m;
             }
 
